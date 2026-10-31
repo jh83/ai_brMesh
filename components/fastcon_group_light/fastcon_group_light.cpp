@@ -19,7 +19,7 @@ void FastconGroupLight::write_state(light::LightState *state) {
   // ON:  43 2a a8 00 80 00 00 00 00 00 00 00
   // OFF: 43 2a a8 00 00 00 00 00 00 00 00 00
   std::vector<uint8_t> payload = {0x43, 0x2a, 0xa8, 0x00,
-                                  is_on ? 0x80 : 0x00,
+    static_cast<uint8_t>(is_on ? 0x80 : 0x00),
                                   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 
   // TODO: send group selector first if needed, then this payload
